@@ -10,7 +10,7 @@ var http = require('http');
 var path = require('path');
 
 var Mongoose = require('mongoose');
-var db = Mongoose.createConnection('localhost', 'meantestapp');
+var db = Mongoose.createConnection('localhost', 'bptrackapp');
 
 var app = express();
 
