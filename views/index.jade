@@ -1,5 +1,22 @@
 extends layout
 
+block head
+  link(rel='stylesheet', href='/javascripts/vendor/bootstrap-css/css/bootstrap.css')
+  
+  script(type='text/javascript', src='/javascripts/controllers/BPListController.js')
+
 block content
-  h1= title
-  p Welcome to #{title}
+ div.container
+  h1 BP readings
+  table
+   thead
+   tbody
+    - each pressure in pressures
+     - var datetaken = new Date(pressure.datetaken).toDateString()
+     tr
+      td= datetaken
+      td= pressure.timeofday
+      td= pressure.systolic
+      td= pressure.diastolic
+      td= pressure.pulse
+
