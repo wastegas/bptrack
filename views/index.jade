@@ -6,17 +6,21 @@ block head
   script(type='text/javascript', src='/javascripts/controllers/BPListController.js')
 
 block content
- div.container
-  h1 BP readings
-  table
-   thead
-   tbody
-    - each pressure in pressures
-     - var datetaken = new Date(pressure.datetaken).toDateString()
-     tr
-      td= datetaken
-      td= pressure.timeofday
-      td= pressure.systolic
-      td= pressure.diastolic
-      td= pressure.pulse
+ div.container(ng-controller='BPListController', ng-init='setPressures( #{JSON.stringify(pressures)} )')
+   h2 BP readings
+   table
+     thead
+      tr 
+       td Date
+       td Time
+       td Systolic
+       td Diastolic
+       td Pulse
+     tbody
+      tr(ng-repeat='pressure in pressures')
+       td {{pressure.datetaken | date:'MMM d, yyyy'}}
+       td {{pressure.timeofday}}
+       td {{pressure.systolic}}
+       td {{pressure.diastolic}}
+       td {{pressure.pulse}}
 
