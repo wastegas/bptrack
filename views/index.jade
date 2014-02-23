@@ -10,11 +10,12 @@ block content
    h2 Add New
    form(novalidate, ng-submit='addNewPressure()')
     input.form-control(datepicker-popup ng-model='pressure.datetaken' ng-required='true' show-weeks='false')   
-    select.form-control(ng-model='select.time' ng-required='true' ng-options='option.value as option.name for option in timeOptions' value='pressure.time')
+    select.form-control(ng-model='pressure.timeofday' ng-required='true' ng-options='option.value as option.name for option in timeOptions' ng-change='selection()')
     input.form-control(type='text', ng-model='pressure.systolic' placeholder='Systolic')
     input.form-control(type='text', ng-model='pressure.diastolic' placeholder='Diastolic')
     input.form-control(type='text', ng-model='pressure.pulse' placeholder='Pulse')
-    button.btn-btn-default(type='submit') Add New Reading
+    button.btn.btn-default(type='submit') Add New Reading
+   div {{pressure.timeofday}}
    h2 BP readings
    table
      thead
