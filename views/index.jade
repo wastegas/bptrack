@@ -16,7 +16,7 @@ block content
     input.form-control(type='text', ng-model='newPressure.pulse' placeholder='Pulse')
     button.btn.btn-default(type='submit') Add New Reading
    h2 BP readings
-   table
+   table.table.table-condensed
      thead
       tr 
        td Date
@@ -26,7 +26,7 @@ block content
        td Pulse
      tbody
       tr(ng-repeat='pressure in pressures')
-       td {{pressure.datetaken | date:'MMM d, yyyy'}}
+       td {{pressure.datetaken | date:'shortDate'}}
        td {{pressure.timeofday}}
        td {{pressure.systolic}}
        td {{pressure.diastolic}}
