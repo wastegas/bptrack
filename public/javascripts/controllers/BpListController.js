@@ -4,9 +4,9 @@ function BPListController($scope, $http) {
     $scope.newPressure = {
         datetaken: new Date().getTime(),
         timeofday: 'Morning',
-        systolic: 0,
-        diastolic: 0,
-        pulse: 0
+        systolic: null,
+        diastolic: null,
+        pulse: null
     };
     
     $scope.setPressures = function(pressures) {
@@ -17,7 +17,9 @@ function BPListController($scope, $http) {
         $http.post('/pressure.json', $scope.newPressure).success(function(data) {
             if(data.pressure) {
                 $scope.pressures.push(data.pressure);
-                //$scope.newPressure.timeofday('');
+                $scope.newPressure.systolic = null;
+                $scope.newPressure.diastolic = null;
+                $scope.newPressure.pulse = null;
             } else {
                 alert(JSON.stringify(data));
             }
