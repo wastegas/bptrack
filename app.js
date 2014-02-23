@@ -34,7 +34,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.indexi(Pressure));
+app.get('/', routes.index(Pressure));
 app.get('/users', user.list);
 
 app.post('/pressures.json', routes.addPressure(Pressure));
