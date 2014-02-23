@@ -3,7 +3,7 @@
  * GET home page.
  */
 
-exports.index = function(pressures){
+exports.index = function(Pressure) {
     return function(req, res) {
         Pressure.find({}, function(error, pressures) {
             res.render('index', {
