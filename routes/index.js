@@ -3,15 +3,26 @@
  * GET home page.
  */
 
-exports.index = function(req, res){
-  res.render('index', { 
-      title: 'Express',
-   });
+exports.index = function(pressures){
+    return function(req, res) {
+        Pressure.find({}, function(error, pressures) {
+            res.render('index', {
+                title: 'Express',
+                pressures : pressures
+            });
+        })
+    }
 };
 
-exports.addPressure = function(pressures) {
+exports.addPressure = function(Pressure) {
     return function(req, res) {
-        pressures.push(req.body);
-        res.json({ pressures : pressures });
+        var pressure = new Pressure(req.body);
+        pressure.save(function(error, pressure) {
+            if(error || !pressure) {
+                res.json({ error : error });
+            } else {
+                res.json({ pressure : pressure });
+            }
+        })
     }
 };
