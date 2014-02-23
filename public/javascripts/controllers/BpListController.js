@@ -2,11 +2,11 @@ function BPListController($scope, $http) {
     $scope.pressures = [];
 
     $scope.newPressure = {
-        datetaken : new Date().getTime(),
-        timeofday : '',
-        systolic : 0,
-        diastolic : 0,
-        pulse : 0
+        datetaken: new Date().getTime(),
+        timeofday: 'Morning',
+        systolic: 0,
+        diastolic: 0,
+        pulse: 0
     };
     
     $scope.setPressures = function(pressures) {
@@ -17,10 +17,7 @@ function BPListController($scope, $http) {
         $http.post('/pressure.json', $scope.newPressure).success(function(data) {
             if(data.pressure) {
                 $scope.pressures.push(data.pressure);
-                $scope.newPressure.timeofday = '';
-                $scope.newPressure.systolic = 0;
-                $scope.newPressure.diastolic = 0;
-                $scope.newPressure.pulse = 0;
+                //$scope.newPressure.timeofday('');
             } else {
                 alert(JSON.stringify(data));
             }
