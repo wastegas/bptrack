@@ -15,11 +15,15 @@ function BPListController($scope, $http) {
 
     $scope.addNewPressure = function() {
         $http.post('/pressure.json', $scope.newPressure).sucess(function(data) {
-            $scope.pressures = data.pressures;
-            $scope.newPressure.time = '';
-            $scope.newPressure.systolic = 0;
-            $scope.newPressure.diastolic = 0;
-            $scope.newPressure.pulse = 0;
+            if(data.pressure) {
+                $scope.pressures.push(data.pressure);
+                $scope.newPressure.time = '';
+                $scope.newPressure.systolic = 0;
+                $scope.newPressure.diastolic = 0;
+                $scope.newPressure.pulse = 0;
+            } else {
+                alert(JSON.stringify(data));
+            }
         });
     };
 
