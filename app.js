@@ -12,6 +12,9 @@ var path = require('path');
 var Mongoose = require('mongoose');
 var db = Mongoose.createConnection('localhost', 'bptrackapp');
 
+var PressureSchema = require('./models/Pressure.js').PressureSchema;
+var Pressure = db.model('pressures', PressureSchema);
+
 var app = express();
 
 // all environments
