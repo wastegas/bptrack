@@ -34,21 +34,6 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-var pressures = [
-        { datetaken : new Date(new Date()),
-          timeofday : 'Morning',
-          systolic : 133,
-          diastolic: 76,
-          pulse : 67
-        },
-        { datetaken : new Date(new Date()),
-          timeofday : 'Evening',
-          systolic  : 119,
-          diastolic : 79,
-          pulse : 66
-        },
-      ]
-
 app.get('/', routes.indexi(pressures));
 app.get('/users', user.list);
 
