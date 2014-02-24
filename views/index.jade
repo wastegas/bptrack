@@ -25,7 +25,7 @@ block content
        td Diastolic
        td Pulse
      tbody
-      tr(ng-repeat='pressure in pressures')
+      tr(ng-repeat='pressure in pressures' ng-class="getClass(pressure)")
        td {{pressure.datetaken | date:'shortDate'}}
        td {{pressure.timeofday}}
        td {{pressure.systolic}}
