@@ -37,4 +37,18 @@ function BPListController($scope, $http) {
     $scope.selection = function() {
         console.log($scope.pressure);
     };
+
+    $scope.getClass = function(pressure) {
+        if(pressure.systolic < 120) {
+            return 'success';
+        } else if(pressure.systolic > 120 && pressure.systolic <= 139) {
+                return 'warning';
+        } else if(pressure.systolic >= 140 && pressure.systolic <=159) {
+                return 'stage1';
+        } else {
+            return 'danger';
+        }
+    };
+
+
 }
