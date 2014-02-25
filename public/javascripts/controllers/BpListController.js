@@ -39,15 +39,17 @@ function BPListController($scope, $http) {
     };
 
     $scope.getClass = function(pressure) {
-        if(pressure.systolic < 120) {
+        if(pressure.systolic <= 120 && pressure.diastolic < 80) {
             return 'success';
-        } else if(pressure.systolic > 120 && pressure.systolic <= 139) {
-                return 'warning';
-        } else if(pressure.systolic >= 140 && pressure.systolic <=159) {
+        } else if(pressure.systolic >= 140 && pressure.systolic <=159 || pressure.diastolic >= 90 && pressure.diastolic <= 99) {
                 return 'stage1';
+        } else if(pressure.systolic > 120 && pressure.systolic <= 139 || pressure.diastolic >= 80 && pressure.diastolic <= 89) {
+                return 'warning';
         } else {
             return 'danger';
         }
+
+        console.log(pressure.systolic);
     };
 
 
