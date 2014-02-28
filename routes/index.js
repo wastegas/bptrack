@@ -7,7 +7,7 @@ exports.index = function(Pressure) {
     return function(req, res) {
         Pressure.find({}, function(error, pressures) {
             res.render('index', {
-                title: 'Express',
+                title: 'Blood Pressure Tracker',
                 pressures : pressures
             });
         })
